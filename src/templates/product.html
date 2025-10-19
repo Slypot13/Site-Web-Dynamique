@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Name}}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            <div class="nav-left">
+                <a href="/">Home</a>
+                <a href="/add">Add</a>
+            </div>
+            <div class="logo">
+                <a href="/"><img src="/img/logo/1.png" alt="Logo"></a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="product-detail">
+            <div class="product-img">
+                <img src="{{.Image}}" alt="{{.Name}}">
+            </div>
+            <div class="product-info">
+                <h1>{{.Name}}</h1>
+                <p>{{.Description}}</p>
+                {{if .HasDiscount}}
+                    <p class="price">
+                        <span class="old-price">{{.Price}}€</span>
+                        <span class="new-price">{{.DiscountedPrice}}€</span>
+                    </p>
+                {{else}}
+                    <p class="price">{{.Price}}€</p>
+                {{end}}
+                <p>Sizes: {{range .Sizes}}{{.}} {{end}}</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
